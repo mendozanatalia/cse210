@@ -1,3 +1,6 @@
+using System.IO;
+using Microsoft.VisualBasic;
+
 public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
@@ -12,18 +15,39 @@ public class Journal
     {
         foreach (var entry in _entries)
         {
-            // Use the Display method from "Entry.cs"
+            // From "Entry.cs"
             entry.Display();
+            Console.WriteLine();
         }
     }
 
-    public void SaveToFile()
+    public void SaveToFile(string filename)
     {
-        Console.WriteLine("Journal SAVED.");
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            foreach (var entry in _entries)
+            {
+                outputFile.WriteLine($"{entry._date}|{entry._prompText}|{entry._entryText}");
+            }
+        }
+        Console.WriteLine($"'{filename}' saved!");
     }
     
-    public void LoadFromFile()
+    public void LoadFromFile(string fileSaved)
     {
-        Console.WriteLine("Journal LOADED");
+        string[] lines = System.IO.File.ReadAllLines(fileSaved);
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split("|");
+
+                Entry entryLoaded = new Entry
+                {
+                    _date = parts[0],
+                    _prompText = parts[1],
+                    _entryText = parts[2],
+                };
+                _entries.Add(entryLoaded);
+            }
     }
 }

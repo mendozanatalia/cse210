@@ -11,6 +11,6 @@ public class Entry
         Console.WriteLine($"Date: {_date}");
         Console.WriteLine($"Prompt: {_prompText}");
         Console.WriteLine($"'{_entryText}'");
-        Console.WriteLine("------------------------------");
+        Console.WriteLine("");
     }
 }

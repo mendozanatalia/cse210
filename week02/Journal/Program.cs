@@ -24,12 +24,12 @@ class Program
 
             string choice = Console.ReadLine();
 
+            Console.WriteLine("------------------------------");
+
             switch (choice)
             {
                 // 1. Write
-                case "1":
-                    Console.WriteLine("------------------------------");
-                    
+                case "1":                    
                     // Random Prompt
                     string prompt = promptGenerator.GetRandomPrompt();
                     Console.WriteLine(prompt);
@@ -45,38 +45,38 @@ class Program
                     };
                     // Add the entry to the journal
                     journal.AddEntry(userEntry);
-                    Console.WriteLine("------------------------------");
                     break;
 
                 // 2. Display
-                case "2":
-                    Console.WriteLine("------------------------------");
+                case "2":                
                     journal.DisplayAll();
                     break;
 
                 // 3. Load
                 case "3":
-                    Console.WriteLine("------------------------------");
-                    Console.WriteLine("This is the case LOAD");
+                    Console.WriteLine("What is the filename?: ");
+                    Console.Write("--> ");
+                    string fileSaved = Console.ReadLine();
+                    journal.LoadFromFile(fileSaved);
 
                     break;
 
                 // 4. Save
                 case "4":
-                    Console.WriteLine("------------------------------");
-                    Console.WriteLine("This is the case SAVE");
+                    Console.WriteLine("What is the filename?: ");
+                    Console.Write("--> ");
+                    string filename = Console.ReadLine();
+                    journal.SaveToFile(filename);
 
                     break;
 
                 // 5. Quit
                 case "5":
-                    Console.WriteLine("---------------------------");
                     Console.WriteLine("OK! Bye bye :D");
                     return;
 
                 // Handle invalid choice
                 default:
-                    Console.WriteLine("---------------------------");
                     Console.WriteLine("Invalid. Choose a number from 1 to 5.");
 
                     break;
