@@ -44,12 +44,12 @@ public class Fraction
     // Methods
     public string GetFractionString()
     {
-        return $"{_top}/{_bottom}";
+        string stringFraction = $"{_top}/{_bottom}";
+        return stringFraction;
     }
     
     public double GetDecimalValue()
     {
-        double decimalValue = _top/_bottom;
-        return decimalValue;
+        return (double)_top / (double)_bottom;
     }
 }
