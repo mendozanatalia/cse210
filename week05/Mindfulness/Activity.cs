@@ -1,4 +1,4 @@
-public class Activity
+public abstract class Activity
 {
     private string _name;
     private string _description;
@@ -70,4 +70,6 @@ public class Activity
             seconds--;
         }
     }
+
+    public abstract void Run();
 }
